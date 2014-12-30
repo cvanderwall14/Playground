@@ -11,7 +11,12 @@ import { sin, saw, ramp, tri, sqr, pulse, noise } from 'opendsp/osc';
 var amp = "======".length*.1
 
 export function dsp(t) {
-
-  return ( sin(t,440) ) * amp;
   
+  var dec = t - Math.floor(t);
+
+  if (dec <= .05) {
+    return ( sin(t,440) ) * amp;
+  } else {
+    return 0;
+  }
 }
